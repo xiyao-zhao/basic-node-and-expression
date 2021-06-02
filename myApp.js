@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 /* 1) Meet the node console */
 console.log("Hello World");
@@ -23,6 +24,10 @@ app.use(function(req, res, next) {
     console.log(`${req.method} ${req.path} - ${req.ip}`);
     next();
 });
+
+/* 11) Parse POST request with body-parser */
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 /* 3) Serve an HTML file */
 app.get("/", function(req, res) {
