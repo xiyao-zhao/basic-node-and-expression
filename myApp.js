@@ -58,8 +58,10 @@ app.get("/:word/echo", (req, res) => {
     res.json({ echo: req.params.word });
 });
 
-
-
+/* 10) Get query parameter input from the client */
+app.get("/name", (req, res) => {
+    res.json({ name: `${req.query.first} ${req.query.last}` });
+});
 
 
 
