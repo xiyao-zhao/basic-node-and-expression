@@ -26,6 +26,7 @@ app.use(function(req, res, next) {
 });
 
 /* 11) Parse POST request with body-parser */
+// Place it before all the routes
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
@@ -66,6 +67,11 @@ app.get("/:word/echo", (req, res) => {
 /* 10) Get query parameter input from the client */
 app.get("/name", (req, res) => {
     res.json({ name: `${req.query.first} ${req.query.last}` });
+});
+
+/* 12) Get data from POST*/
+app.post("/name", (req, res) => {
+    res.json({ name: `${req.body.first} ${req.body.last}` });
 });
 
 
