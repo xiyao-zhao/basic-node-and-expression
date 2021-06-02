@@ -45,6 +45,13 @@ app.get("/json", function(req, res) {
     } else res.json({"message": "Hello json"});
 });
 
+/* 8) Chain middleware to create a time server */
+app.get("/now", (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+}, (req, res) => {
+    res.json({time: req.time});
+});
 
 
 
